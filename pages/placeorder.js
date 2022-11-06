@@ -21,7 +21,7 @@ export default function PlaceOrderScreen() {
     cartItems.reduce((a, c) => a + c.quantity * c.price, 0)
   ); // 123.4567 => 123.46
 
-  const shippingPrice = itemsPrice > 200 ? 0 : 15;
+  const shippingPrice = itemsPrice > 200 ? 60 : 15;
   const taxPrice = round2(itemsPrice * 0.15);
   const totalPrice = round2(itemsPrice + shippingPrice + taxPrice);
 
@@ -108,12 +108,13 @@ export default function PlaceOrderScreen() {
                       <td>
                         <Link href={`/product/${item.slug}`}>
                           <a className="flex items-center">
-                            <Image
-                              src={item.image}
-                              alt={item.name}
-                              width={50}
-                              height={50}
-                            ></Image>
+                            <a>
+                              <img
+                                src={item.image}
+                                alt={item.name}
+                                className="rounded shadow object-cover h-16 min-w-fit"
+                              />
+                            </a>
                             &nbsp;
                             {item.name}
                           </a>

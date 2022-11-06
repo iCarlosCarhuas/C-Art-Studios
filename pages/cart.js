@@ -52,12 +52,13 @@ function CartScreen() {
                     <td>
                       <Link href={`/product/${item.slug}`}>
                         <a className="flex items-center">
-                          <Image
+                        <a>
+                          <img
                             src={item.image}
                             alt={item.name}
-                            width={50}
-                            height={50}
-                          ></Image>
+                            className="rounded shadow object-cover h-20 min-w-fit"
+                          />
+                        </a>
                           &nbsp;
                           {item.name}
                         </a>

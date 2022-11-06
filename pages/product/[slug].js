@@ -37,13 +37,13 @@ export default function ProductScreen(props) {
       </div>
       <div className="grid md:grid-cols-4 md:gap-3">
         <div className="md:col-span-2">
-          <Image
+        <a>
+          <img
             src={product.image}
             alt={product.name}
-            width={640}
-            height={640}
-            layout="responsive"
-          ></Image>
+            className="rounded shadow object-cover h-auto w-full"
+          />
+        </a>
         </div>
         <div>
           <ul>
