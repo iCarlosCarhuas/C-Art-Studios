@@ -31,53 +31,63 @@ export default function ProductScreen(props) {
   };
 
   return (
+  <div className="bg-gradient-to-t from-purple-500 via-cyan-400 to-white">
     <Layout title={product.name}>
-      <div className="py-2">
-        <Link href="/">back to products</Link>
+      <div className="py-2 bg-teal-500 hover:bg-indigo-200 transition-all rounded pl-3 inline-block pr-3 mb-1">
+        <Link href="/" ><div className="cursor-pointer text-lg font-bold text-purple-900 hover:text-teal-500 transition-all">Volver a Productos</div></Link>
       </div>
       <div className="grid md:grid-cols-4 md:gap-3">
-        <div className="md:col-span-2">
+        <div className="rounded md:col-span-2 bg-teal-300 bg-gradient-to-r from-indigo-200 px-5 py-8">
+          
         <a>
           <img
             src={product.image}
             alt={product.name}
-            className="rounded shadow object-cover h-auto w-full"
+            className="rounded shadow object-cover h-auto w-full pb-5"
           />
         </a>
         </div>
         <div>
           <ul>
-            <li>
-              <h1 className="text-lg">{product.name}</h1>
+            <li className='pb-2'>
+              <h1 className="text-xl font-semibold">{product.name}</h1>
             </li>
-            <li>Category: {product.category}</li>
-            <li>Brand: {product.brand}</li>
-            <li>
-              {product.rating} of {product.numReviews} reviews
+            <li className='pb-2 text-teal'><b>Categoria:</b> {product.category}</li>
+            <li className='pb-2'><b>Autor:</b> {product.brand}</li>
+            {/* <li>
+              {product.rating} of {product.numReviews} vistas
+            </li> */}
+            <li className='pb-2'> 
+              <b><div className='pb-2'>Descripción</div></b> 
+            <text disabled
+              className="  py-2 px-0 w-full"
+              >
+              {product.description}
+              </text>
             </li>
-            <li>Description: {product.description}</li>
           </ul>
         </div>
         <div>
           <div className="card p-5">
             <div className="mb-2 flex justify-between">
-              <div>Price</div>
+              <div className='font-semibold'>Precio</div>
               <div>${product.price}</div>
             </div>
             <div className="mb-2 flex justify-between">
-              <div>Status</div>
-              <div>{product.countInStock > 0 ? 'In stock' : 'Unavailable'}</div>
+              <div className='font-semibold'>Estado</div>
+              <div>{product.countInStock > 0 ? 'En Venta' : 'Inhabilitado'}</div>
             </div>
             <button
-              className="primary-button w-full"
+              className="primary-button w-full font-bold text-white transition-all"
               onClick={addToCartHandler}
             >
-              Add to cart
+              Agregar al carro
             </button>
           </div>
         </div>
       </div>
     </Layout>
+  </div>
   );
 }
 

@@ -17,16 +17,17 @@ export default function Home({ products }) {
     const { data } = await axios.get(`/api/products/${product._id}`);
 
     if (data.countInStock < quantity) {
-      return toast.error('Sorry. Product is out of stock');
+      return toast.error('Lo siento. El producto esta fuera de venta');
     }
     dispatch({ type: 'CART_ADD_ITEM', payload: { ...product, quantity } });
 
-    toast.success('Product added to the cart');
+    toast.success('Producto agregado al carrito');
   };
 
   return (
+    <div className="bg-gradient-to-t from-purple-500 via-cyan-400 to-white">
     <Layout title="Home">
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-4">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-4 space-between">
         {products.map((product) => (
           <ProductItem
             product={product}
@@ -36,6 +37,7 @@ export default function Home({ products }) {
         ))}
       </div>
     </Layout>
+    </div>
   );
 }
 

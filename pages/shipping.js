@@ -50,85 +50,88 @@ export default function ShippingScreen() {
   };
 
   return (
+  <div className="bg-gradient-to-t from-purple-500 via-cyan-400 to-white">
+
     <Layout title="Shipping Address">
       <CheckoutWizard activeStep={1} />
       <form
         className="mx-auto max-w-screen-md"
         onSubmit={handleSubmit(submitHandler)}
-      >
-        <h1 className="mb-4 text-xl">Shipping Address</h1>
+        >
+        <h1 className="mb-4 text-xl">Lugar de Envío</h1>
         <div className="mb-4">
-          <label htmlFor="fullName">Full Name</label>
+          <label htmlFor="fullName">Nombre Y Apellidos</label>
           <input
             className="w-full"
             id="fullName"
             autoFocus
             {...register('fullName', {
-              required: 'Please enter full name',
+              required: 'Por favor ingresa tu Nombre Y Apellidos'
             })}
-          />
+            />
           {errors.fullName && (
             <div className="text-red-500">{errors.fullName.message}</div>
-          )}
+            )}
         </div>
         <div className="mb-4">
-          <label htmlFor="address">Address</label>
+          <label htmlFor="address">Dirección</label>
           <input
             className="w-full"
             id="address"
             {...register('address', {
-              required: 'Please enter address',
-              minLength: { value: 3, message: 'Address is more than 2 chars' },
+              required: 'Por favor ingresa dirección',
+              minLength: { value: 3, message: 'La dirección tiene mas de 2 carácteres' },
             })}
           />
           {errors.address && (
             <div className="text-red-500">{errors.address.message}</div>
-          )}
+            )}
         </div>
         <div className="mb-4">
-          <label htmlFor="city">City</label>
+          <label htmlFor="city">Ciudad</label>
           <input
             className="w-full"
             id="city"
             {...register('city', {
-              required: 'Please enter city',
+              required: 'Por favor ingresa la ciudad',
             })}
           />
           {errors.city && (
             <div className="text-red-500 ">{errors.city.message}</div>
-          )}
+            )}
         </div>
         <div className="mb-4">
-          <label htmlFor="postalCode">Postal Code</label>
+          <label htmlFor="postalCode">Código Postal</label>
           <input
             className="w-full"
             id="postalCode"
             {...register('postalCode', {
-              required: 'Please enter postal code',
+              required: 'Por favor ingresa el código postal',
             })}
-          />
+            />
           {errors.postalCode && (
             <div className="text-red-500 ">{errors.postalCode.message}</div>
           )}
         </div>
         <div className="mb-4">
-          <label htmlFor="country">Country</label>
+          <label htmlFor="country">País</label>
           <input
             className="w-full"
             id="country"
             {...register('country', {
-              required: 'Please enter country',
+              required: 'Por favor ingresa el Paìs',
             })}
-          />
+            />
           {errors.country && (
             <div className="text-red-500 ">{errors.country.message}</div>
-          )}
+            )}
         </div>
         <div className="mb-4 flex justify-between">
-          <button className="primary-button">Next</button>
+          <button className="primary-button">Siguiente</button>
         </div>
       </form>
     </Layout>
+  </div>
   );
 }
 

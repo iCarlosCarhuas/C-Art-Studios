@@ -44,22 +44,24 @@ export default function ProfileScreen() {
   };
 
   return (
+
+  <div className="bg-gradient-to-t from-purple-500 via-cyan-400 to-white">
     <Layout title="Profile">
       <form
         className="mx-auto max-w-screen-md"
         onSubmit={handleSubmit(submitHandler)}
       >
-        <h1 className="mb-4 text-xl">Update Profile</h1>
+        <h1 className="mb-4 text-xl">Actualizar Perfil</h1>
 
         <div className="mb-4">
-          <label htmlFor="name">Name</label>
+          <label htmlFor="name">Nombre</label>
           <input
             type="text"
             className="w-full"
             id="name"
             autoFocus
             {...register('name', {
-              required: 'Please enter name',
+              required: 'Por favor ingresa tu nombre',
             })}
           />
           {errors.name && (
@@ -74,10 +76,10 @@ export default function ProfileScreen() {
             className="w-full"
             id="email"
             {...register('email', {
-              required: 'Please enter email',
+              required: 'Por favor ingresa email',
               pattern: {
                 value: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$/i,
-                message: 'Please enter valid email',
+                message: 'Please ingresa email válido',
               },
             })}
           />
@@ -87,13 +89,13 @@ export default function ProfileScreen() {
         </div>
 
         <div className="mb-4">
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">Contraseña</label>
           <input
             className="w-full"
             type="password"
             id="password"
             {...register('password', {
-              minLength: { value: 6, message: 'password is more than 5 chars' },
+              minLength: { value: 6, message: 'Minimo: 6 caracteres' },
             })}
           />
           {errors.password && (
@@ -102,7 +104,7 @@ export default function ProfileScreen() {
         </div>
 
         <div className="mb-4">
-          <label htmlFor="confirmPassword">Confirm Password</label>
+          <label htmlFor="confirmPassword">Confirmar contraseña</label>
           <input
             className="w-full"
             type="password"
@@ -111,7 +113,7 @@ export default function ProfileScreen() {
               validate: (value) => value === getValues('password'),
               minLength: {
                 value: 6,
-                message: 'confirm password is more than 5 chars',
+                message: 'Confirmar contraseña: min. 6 caracteres',
               },
             })}
           />
@@ -122,14 +124,15 @@ export default function ProfileScreen() {
           )}
           {errors.confirmPassword &&
             errors.confirmPassword.type === 'validate' && (
-              <div className="text-red-500 ">Password do not match</div>
+              <div className="text-red-500 ">Contraseña no valida</div>
             )}
         </div>
         <div className="mb-4">
-          <button className="primary-button">Update Profile</button>
+          <button className="primary-button">Actualizar Perfil</button>
         </div>
       </form>
     </Layout>
+  </div>
   );
 }
 

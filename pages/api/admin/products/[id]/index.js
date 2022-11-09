@@ -39,10 +39,10 @@ const putHandler = async (req, res) => {
     product.description = req.body.description;
     await product.save();
     await db.disconnect();
-    res.send({ message: 'Product updated successfully' });
+    res.send({ message: 'Producto subido exitosamente' });
   } else {
     await db.disconnect();
-    res.status(404).send({ message: 'Product not found' });
+    res.status(404).send({ message: 'Producto no encontrado' });
   }
 };
 const deleteHandler = async (req, res) => {
@@ -51,10 +51,10 @@ const deleteHandler = async (req, res) => {
   if (product) {
     await product.remove();
     await db.disconnect();
-    res.send({ message: 'Product deleted successfully' });
+    res.send({ message: 'Producto eliminado exitosamente' });
   } else {
     await db.disconnect();
-    res.status(404).send({ message: 'Product not found' });
+    res.status(404).send({ message: 'Producto no Encontrado' });
   }
 };
 export default handler;

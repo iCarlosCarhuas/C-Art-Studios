@@ -63,43 +63,45 @@ export default function PlaceOrderScreen() {
   };
 
   return (
+  <div className="bg-gradient-to-t from-purple-500 via-cyan-400 to-white">
+
     <Layout title="Place Order">
       <CheckoutWizard activeStep={3} />
-      <h1 className="mb-4 text-xl">Place Order</h1>
+      <h1 className="mb-4 text-xl">Confirmar Órden</h1>
       {cartItems.length === 0 ? (
         <div>
-          Cart is empty. <Link href="/">Go shopping</Link>
+          Carrito vacío. <Link href="/" className="underline">Vuelve a compras</Link>
         </div>
       ) : (
         <div className="grid md:grid-cols-4 md:gap-5">
           <div className="overflow-x-auto md:col-span-3">
             <div className="card  p-5">
-              <h2 className="mb-2 text-lg">Shipping Address</h2>
+              <h2 className="mb-2 text-lg">Lugar de Envío</h2>
               <div>
                 {shippingAddress.fullName}, {shippingAddress.address},{' '}
                 {shippingAddress.city}, {shippingAddress.postalCode},{' '}
                 {shippingAddress.country}
               </div>
               <div>
-                <Link href="/shipping">Edit</Link>
+                <Link href="/shipping">Editar</Link>
               </div>
             </div>
             <div className="card  p-5">
-              <h2 className="mb-2 text-lg">Payment Method</h2>
+              <h2 className="mb-2 text-lg">Modo de Pago</h2>
               <div>{paymentMethod}</div>
               <div>
-                <Link href="/payment">Edit</Link>
+                <Link href="/payment">Editar</Link>
               </div>
             </div>
             <div className="card overflow-x-auto p-5">
-              <h2 className="mb-2 text-lg">Order Items</h2>
+              <h2 className="mb-2 text-lg">Ordenar Objeto(s)</h2>
               <table className="min-w-full">
                 <thead className="border-b">
                   <tr>
-                    <th className="px-5 text-left">Item</th>
-                    <th className="    p-5 text-right">Quantity</th>
-                    <th className="  p-5 text-right">Price</th>
-                    <th className="p-5 text-right">Subtotal</th>
+                    <th className="px-5 text-left">Objeto</th>
+                    <th className="    p-5 text-right">Cantidad</th>
+                    <th className="  p-5 text-right">Precio</th>
+                    <th className="p-5 text-right">Sub-total</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -113,10 +115,12 @@ export default function PlaceOrderScreen() {
                                 src={item.image}
                                 alt={item.name}
                                 className="rounded shadow object-cover h-16 min-w-fit"
-                              />
+                                />
                             </a>
-                            &nbsp;
-                            {item.name}
+                            <a className="ml-2 sm:block hidden">
+                              &nbsp;
+                                {item.name}
+                            </a>
                           </a>
                         </Link>
                       </td>
@@ -130,34 +134,34 @@ export default function PlaceOrderScreen() {
                 </tbody>
               </table>
               <div>
-                <Link href="/cart">Edit</Link>
+                <Link href="/cart">Editar</Link>
               </div>
             </div>
           </div>
           <div>
             <div className="card  p-5">
-              <h2 className="mb-2 text-lg">Order Summary</h2>
+              <h2 className="mb-2 text-lg">Resumen de la Órden</h2>
               <ul>
                 <li>
                   <div className="mb-2 flex justify-between">
-                    <div>Items</div>
+                    <div>Objeto(s)</div>
                     <div>${itemsPrice}</div>
                   </div>
                 </li>
                 <li>
                   <div className="mb-2 flex justify-between">
-                    <div>Tax</div>
+                    <div>Impuesto</div>
                     <div>${taxPrice}</div>
                   </div>
                 </li>
                 <li>
                   <div className="mb-2 flex justify-between">
-                    <div>Shipping</div>
+                    <div>Envío</div>
                     <div>${shippingPrice}</div>
                   </div>
                 </li>
                 <li>
-                  <div className="mb-2 flex justify-between">
+                  <div className="mb-2 flex justify-between shadow-inner">
                     <div>Total</div>
                     <div>${totalPrice}</div>
                   </div>
@@ -167,16 +171,17 @@ export default function PlaceOrderScreen() {
                     disabled={loading}
                     onClick={placeOrderHandler}
                     className="primary-button w-full"
-                  >
-                    {loading ? 'Loading...' : 'Place Order'}
+                    >
+                    {loading ? 'Cargando...' : 'Confirmar Órden'}
                   </button>
                 </li>
               </ul>
-            </div>
+            </div>&nbsp;
           </div>
         </div>
       )}
     </Layout>
+  </div>
   );
 }
 

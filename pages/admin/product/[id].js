@@ -134,29 +134,30 @@ export default function AdminProductEditScreen() {
   };
 
   return (
+  <div className="bg-gradient-to-t from-purple-500 via-cyan-400 to-white">
     <Layout title={`Edit Product ${productId}`}>
       <div className="grid md:grid-cols-4 md:gap-5">
         <div>
           <ul>
             <li>
-              <Link href="/admin/dashboard">Dashboard</Link>
+              <Link href="/admin/dashboard">Panel</Link>
             </li>
             <li>
-              <Link href="/admin/orders">Orders</Link>
+              <Link href="/admin/orders">Ordenes</Link>
             </li>
             <li>
               <Link href="/admin/products">
-                <a className="font-bold">Products</a>
+                <a className="font-bold">Productos</a>
               </Link>
             </li>
             <li>
-              <Link href="/admin/users">Users</Link>
+              <Link href="/admin/users">Usuarios</Link>
             </li>
           </ul>
         </div>
         <div className="md:col-span-3">
           {loading ? (
-            <div>Loading...</div>
+            <div>Cargando...</div>
           ) : error ? (
             <div className="alert-error">{error}</div>
           ) : (
@@ -166,14 +167,14 @@ export default function AdminProductEditScreen() {
             >
               <h1 className="mb-4 text-xl">{`Edit Product ${productId}`}</h1>
               <div className="mb-4">
-                <label htmlFor="name">Name</label>
+                <label htmlFor="name">Nombre</label>
                 <input
                   type="text"
                   className="w-full"
                   id="name"
                   autoFocus
                   {...register('name', {
-                    required: 'Please enter name',
+                    required: 'Por favor, ingresa nombre',
                   })}
                 />
                 {errors.name && (
@@ -181,13 +182,13 @@ export default function AdminProductEditScreen() {
                 )}
               </div>
               <div className="mb-4">
-                <label htmlFor="slug">Slug</label>
+                <label htmlFor="slug">Direccion URL</label>
                 <input
                   type="text"
                   className="w-full"
                   id="slug"
                   {...register('slug', {
-                    required: 'Please enter slug',
+                    required: 'Por favor ingresa direccion URL',
                   })}
                 />
                 {errors.slug && (
@@ -195,13 +196,13 @@ export default function AdminProductEditScreen() {
                 )}
               </div>
               <div className="mb-4">
-                <label htmlFor="price">Price</label>
+                <label htmlFor="price">Precio</label>
                 <input
                   type="text"
                   className="w-full"
                   id="price"
                   {...register('price', {
-                    required: 'Please enter price',
+                    required: 'Por favor ingresa precio',
                   })}
                 />
                 {errors.price && (
@@ -209,13 +210,13 @@ export default function AdminProductEditScreen() {
                 )}
               </div>
               <div className="mb-4">
-                <label htmlFor="image">image</label>
+                <label htmlFor="image">Imagen</label>
                 <input
                   type="text"
                   className="w-full"
                   id="image"
                   {...register('image', {
-                    required: 'Please enter image',
+                    required: 'Por favor ingresar imagen',
                   })}
                 />
                 {errors.image && (
@@ -223,7 +224,7 @@ export default function AdminProductEditScreen() {
                 )}
               </div>
               <div className="mb-4">
-                <label htmlFor="imageFile">Upload image</label>
+                <label htmlFor="imageFile">Subir imagen</label>
                 <input
                   type="file"
                   className="w-full"
@@ -231,16 +232,16 @@ export default function AdminProductEditScreen() {
                   onChange={uploadHandler}
                 />
 
-                {loadingUpload && <div>Uploading....</div>}
+                {loadingUpload && <div>Subiendo....</div>}
               </div>
               <div className="mb-4">
-                <label htmlFor="category">category</label>
+                <label htmlFor="category">Categoria</label>
                 <input
                   type="text"
                   className="w-full"
                   id="category"
                   {...register('category', {
-                    required: 'Please enter category',
+                    required: 'Por favor ingresa categoria',
                   })}
                 />
                 {errors.category && (
@@ -248,13 +249,13 @@ export default function AdminProductEditScreen() {
                 )}
               </div>
               <div className="mb-4">
-                <label htmlFor="brand">brand</label>
+                <label htmlFor="brand">Marca</label>
                 <input
                   type="text"
                   className="w-full"
                   id="brand"
                   {...register('brand', {
-                    required: 'Please enter brand',
+                    required: 'Por favor ingresar marca',
                   })}
                 />
                 {errors.brand && (
@@ -262,7 +263,7 @@ export default function AdminProductEditScreen() {
                 )}
               </div>
               <div className="mb-4">
-                <label htmlFor="countInStock">countInStock</label>
+                <label htmlFor="countInStock">Cantidad en Venta</label>
                 <input
                   type="text"
                   className="w-full"
@@ -278,13 +279,13 @@ export default function AdminProductEditScreen() {
                 )}
               </div>
               <div className="mb-4">
-                <label htmlFor="countInStock">description</label>
+                <label htmlFor="countInStock">Descripción</label>
                 <input
                   type="text"
                   className="w-full"
                   id="description"
                   {...register('description', {
-                    required: 'Please enter description',
+                    required: 'Por favor ingresar descripción',
                   })}
                 />
                 {errors.description && (
@@ -295,17 +296,18 @@ export default function AdminProductEditScreen() {
               </div>
               <div className="mb-4">
                 <button disabled={loadingUpdate} className="primary-button">
-                  {loadingUpdate ? 'Loading' : 'Update'}
+                  {loadingUpdate ? 'Cargando' : 'Subir'}
                 </button>
               </div>
               <div className="mb-4">
-                <Link href={`/admin/products`}>Back</Link>
+                <Link href={`/admin/products`}>Atras</Link>
               </div>
             </form>
           )}
         </div>
       </div>
     </Layout>
+  </div>
   );
 }
 

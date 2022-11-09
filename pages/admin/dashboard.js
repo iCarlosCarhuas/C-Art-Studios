@@ -77,30 +77,31 @@ function AdminDashboardScreen() {
     ],
   };
   return (
+  <div className="bg-gradient-to-t from-teal-200 via-cyan-500 to-white">
     <Layout title="Admin Dashboard">
       <div className="grid  md:grid-cols-4 md:gap-5">
         <div>
           <ul>
             <li>
               <Link href="/admin/dashboard">
-                <a className="font-bold">Dashboard</a>
+                <a className="font-bold">Panel</a>
               </Link>
             </li>
             <li>
-              <Link href="/admin/orders">Orders</Link>
+              <Link href="/admin/orders">Ordenes</Link>
             </li>
             <li>
-              <Link href="/admin/products">Products</Link>
+              <Link href="/admin/products">Productos</Link>
             </li>
             <li>
-              <Link href="/admin/users">Users</Link>
+              <Link href="/admin/users">Usuarios</Link>
             </li>
           </ul>
         </div>
         <div className="md:col-span-3">
-          <h1 className="mb-4 text-xl">Admin Dashboard</h1>
+          <h1 className="mb-4 text-xl">Panel Administrativo</h1>
           {loading ? (
-            <div>Loading...</div>
+            <div>Cargando...</div>
           ) : error ? (
             <div className="alert-error">{error}</div>
           ) : (
@@ -108,26 +109,26 @@ function AdminDashboardScreen() {
               <div className="grid grid-cols-1 md:grid-cols-4">
                 <div className="card m-5 p-5">
                   <p className="text-3xl">${summary.ordersPrice} </p>
-                  <p>Sales</p>
-                  <Link href="/admin/orders">View sales</Link>
+                  <p>Ventas</p>
+                  <Link href="/admin/orders">Ver ventas</Link>
                 </div>
                 <div className="card m-5 p-5">
                   <p className="text-3xl">{summary.ordersCount} </p>
-                  <p>Orders</p>
-                  <Link href="/admin/orders">View orders</Link>
+                  <p>Ordenes</p>
+                  <Link href="/admin/orders">Ver ordenes</Link>
                 </div>
                 <div className="card m-5 p-5">
                   <p className="text-3xl">{summary.productsCount} </p>
-                  <p>Products</p>
-                  <Link href="/admin/products">View products</Link>
+                  <p>Productos</p>
+                  <Link href="/admin/products">Ver productos</Link>
                 </div>
                 <div className="card m-5 p-5">
                   <p className="text-3xl">{summary.usersCount} </p>
-                  <p>Users</p>
-                  <Link href="/admin/users">View users</Link>
+                  <p>Usuarios</p>
+                  <Link href="/admin/users">View usuarios</Link>
                 </div>
               </div>
-              <h2 className="text-xl">Sales Report</h2>
+              <h2 className="text-xl">Reporte de Ventas</h2>
               <Bar
                 options={{
                   legend: { display: true, position: 'right' },
@@ -139,6 +140,7 @@ function AdminDashboardScreen() {
         </div>
       </div>
     </Layout>
+  </div>
   );
 }
 

@@ -36,10 +36,11 @@ function OrderHistoryScreen() {
     fetchOrders();
   }, []);
   return (
+  <div className="bg-gradient-to-t from-teal-200 via-cyan-500 to-white">
     <Layout title="Order History">
-      <h1 className="mb-4 text-xl">Order History</h1>
+      <h1 className="mb-4 text-xl">Historial de Ordenes</h1>
       {loading ? (
-        <div>Loading...</div>
+        <div>Cargando...</div>
       ) : error ? (
         <div className="alert-error">{error}</div>
       ) : (
@@ -48,11 +49,11 @@ function OrderHistoryScreen() {
             <thead className="border-b">
               <tr>
                 <th className="px-5 text-left">ID</th>
-                <th className="p-5 text-left">DATE</th>
+                <th className="p-5 text-left">FECHA</th>
                 <th className="p-5 text-left">TOTAL</th>
-                <th className="p-5 text-left">PAID</th>
-                <th className="p-5 text-left">DELIVERED</th>
-                <th className="p-5 text-left">ACTION</th>
+                <th className="p-5 text-left">PAGADO</th>
+                <th className="p-5 text-left">ENVIADO</th>
+                <th className="p-5 text-left">ACTO</th>
               </tr>
             </thead>
             <tbody>
@@ -64,16 +65,16 @@ function OrderHistoryScreen() {
                   <td className=" p-5 ">
                     {order.isPaid
                       ? `${order.paidAt.substring(0, 10)}`
-                      : 'not paid'}
+                      : 'no pagado'}
                   </td>
                   <td className=" p-5 ">
                     {order.isDelivered
                       ? `${order.deliveredAt.substring(0, 10)}`
-                      : 'not delivered'}
+                      : 'no enviado'}
                   </td>
                   <td className=" p-5 ">
                     <Link href={`/order/${order._id}`} passHref>
-                      <a>Details</a>
+                      <a>Detalles</a>
                     </Link>
                   </td>
                 </tr>
@@ -83,6 +84,7 @@ function OrderHistoryScreen() {
         </div>
       )}
     </Layout>
+  </div>
   );
 }
 

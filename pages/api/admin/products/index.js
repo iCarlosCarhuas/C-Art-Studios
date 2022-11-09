@@ -13,7 +13,7 @@ const handler = async (req, res) => {
   } else if (req.method === 'POST') {
     return postHandler(req, res);
   } else {
-    return res.status(400).send({ message: 'Method not allowed' });
+    return res.status(400).send({ message: 'Metodo no permitido' });
   }
 };
 const postHandler = async (req, res) => {
@@ -23,17 +23,17 @@ const postHandler = async (req, res) => {
     slug: 'sample-name-' + Math.random(),
     image: '/images/shirt1.jpg',
     price: 0,
-    category: 'sample category',
-    brand: 'sample brand',
+    category: 'muestra de categoria',
+    brand: 'muestra de marca',
     countInStock: 0,
-    description: 'sample description',
+    description: 'muestra de descripción',
     rating: 0,
     numReviews: 0,
   });
 
   const product = await newProduct.save();
   await db.disconnect();
-  res.send({ message: 'Product created successfully', product });
+  res.send({ message: 'Producto creado exitosamente', product });
 };
 const getHandler = async (req, res) => {
   await db.connect();

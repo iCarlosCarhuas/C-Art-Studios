@@ -47,26 +47,28 @@ export default function LoginScreen() {
     }
   };
   return (
+    <div className="bg-gradient-to-t from-teal-200 via-cyan-500 to-white">
+
     <Layout title="Create Account">
       <form
         className="mx-auto max-w-screen-md"
         onSubmit={handleSubmit(submitHandler)}
-      >
-        <h1 className="mb-4 text-xl">Create Account</h1>
+        >
+        <h1 className="mb-4 text-xl">Crea Cuenta</h1>
         <div className="mb-4">
-          <label htmlFor="name">Name</label>
+          <label htmlFor="name">Nombre</label>
           <input
             type="text"
             className="w-full"
             id="name"
             autoFocus
             {...register('name', {
-              required: 'Please enter name',
+              required: 'Por favor ingresa tu nombre',
             })}
-          />
+            />
           {errors.name && (
             <div className="text-red-500">{errors.name.message}</div>
-          )}
+            )}
         </div>
 
         <div className="mb-4">
@@ -74,50 +76,50 @@ export default function LoginScreen() {
           <input
             type="email"
             {...register('email', {
-              required: 'Please enter email',
+              required: 'Por favor ingresa un email',
               pattern: {
                 value: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$/i,
-                message: 'Please enter valid email',
+                message: 'Por favor ingresa un email válido',
               },
             })}
             className="w-full"
             id="email"
-          ></input>
+            ></input>
           {errors.email && (
             <div className="text-red-500">{errors.email.message}</div>
-          )}
+            )}
         </div>
         <div className="mb-4">
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">Contraseña</label>
           <input
             type="password"
             {...register('password', {
-              required: 'Please enter password',
-              minLength: { value: 6, message: 'password is more than 5 chars' },
+              required: 'Por favor ingresa una contraseña',
+              minLength: { value: 6, message: 'Mínimo: 6 carácteres' },
             })}
             className="w-full"
             id="password"
             autoFocus
-          ></input>
+            ></input>
           {errors.password && (
             <div className="text-red-500 ">{errors.password.message}</div>
-          )}
+            )}
         </div>
         <div className="mb-4">
-          <label htmlFor="confirmPassword">Confirm Password</label>
+          <label htmlFor="confirmPassword">Confirmar Contraseña</label>
           <input
             className="w-full"
             type="password"
             id="confirmPassword"
             {...register('confirmPassword', {
-              required: 'Please enter confirm password',
+              required: 'Por favor vuelve a ingresar la contraseña',
               validate: (value) => value === getValues('password'),
               minLength: {
                 value: 6,
-                message: 'confirm password is more than 5 chars',
+                message: 'Mínimo: 6 carácteres',
               },
             })}
-          />
+            />
           {errors.confirmPassword && (
             <div className="text-red-500 ">
               {errors.confirmPassword.message}
@@ -125,18 +127,19 @@ export default function LoginScreen() {
           )}
           {errors.confirmPassword &&
             errors.confirmPassword.type === 'validate' && (
-              <div className="text-red-500 ">Password do not match</div>
-            )}
+              <div className="text-red-500 ">No coincide la contraseña</div>
+              )}
         </div>
 
         <div className="mb-4 ">
-          <button className="primary-button">Register</button>
+          <button className="primary-button font-bold">Registrar</button>
         </div>
         <div className="mb-4 ">
-          Don&apos;t have an account? &nbsp;
-          <Link href={`/register?redirect=${redirect || '/'}`}>Register</Link>
+          ¿No tiene una cuenta? &nbsp;
+          <Link href={`/register?redirect=${redirect || '/'}`}><a className="hover:underline">Regístrate</a></Link>
         </div>
       </form>
     </Layout>
+  </div>
   );
 }

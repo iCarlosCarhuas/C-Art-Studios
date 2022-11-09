@@ -18,7 +18,7 @@ export default function PaymentScreen() {
   const submitHandler = (e) => {
     e.preventDefault();
     if (!selectedPaymentMethod) {
-      return toast.error('Payment method is required');
+      return toast.error('Modo de pago requerido');
     }
     dispatch({ type: 'SAVE_PAYMENT_METHOD', payload: selectedPaymentMethod });
     Cookies.set(
@@ -39,11 +39,13 @@ export default function PaymentScreen() {
   }, [paymentMethod, router, shippingAddress.address]);
 
   return (
+  <div className="bg-gradient-to-t from-purple-500 via-cyan-400 to-white">
+
     <Layout title="Payment Method">
       <CheckoutWizard activeStep={2} />
       <form className="mx-auto max-w-screen-md" onSubmit={submitHandler}>
-        <h1 className="mb-4 text-xl">Payment Method</h1>
-        {['PayPal', 'CashOnDelivery'].map((payment) => (
+        <h1 className="mb-4 text-xl">Modo de Pago</h1>
+        {['PayPal', 'Crédito o Débito'].map((payment) => (
           <div key={payment} className="mb-4">
             <input
               name="paymentMethod"
@@ -52,7 +54,7 @@ export default function PaymentScreen() {
               type="radio"
               checked={selectedPaymentMethod === payment}
               onChange={() => setSelectedPaymentMethod(payment)}
-            />
+              />
 
             <label className="p-2" htmlFor={payment}>
               {payment}
@@ -64,13 +66,14 @@ export default function PaymentScreen() {
             onClick={() => router.push('/shipping')}
             type="button"
             className="default-button"
-          >
-            Back
+            >
+            Atras
           </button>
-          <button className="primary-button">Next</button>
+          <button className="primary-button">Siguiente</button>
         </div>
       </form>
     </Layout>
+  </div>
   );
 }
 

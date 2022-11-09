@@ -28,11 +28,12 @@ function CartScreen() {
     toast.success('Product updated in the cart');
   };
   return (
+  <div className="bg-gradient-to-t from-teal-200 via-cyan-500 to-white">  
     <Layout title="Shopping Cart">
-      <h1 className="mb-4 text-xl">Shopping Cart</h1>
+      <h1 className="mb-4 text-xl">Carrito de compras</h1>
       {cartItems.length === 0 ? (
         <div>
-          Cart is empty. <Link href="/">Go shopping</Link>
+          El carrito esta vacio. <a className="hover:underline"><Link href="/">Vuelva a compras</Link></a>
         </div>
       ) : (
         <div className="grid md:grid-cols-4 md:gap-5">
@@ -40,10 +41,10 @@ function CartScreen() {
             <table className="min-w-full ">
               <thead className="border-b">
                 <tr>
-                  <th className="p-5 text-left">Item</th>
-                  <th className="p-5 text-right">Quantity</th>
-                  <th className="p-5 text-right">Price</th>
-                  <th className="p-5">Action</th>
+                  <th className="p-5 text-left">Objeto</th>
+                  <th className="p-5 text-right">Cantidad</th>
+                  <th className="p-5 text-right">Precio</th>
+                  <th className="p-5">Retirar</th>
                 </tr>
               </thead>
               <tbody>
@@ -51,17 +52,18 @@ function CartScreen() {
                   <tr key={item.slug} className="border-b">
                     <td>
                       <Link href={`/product/${item.slug}`}>
-                        <a className="flex items-center">
-                        <a>
-                          <img
+                        <div className="flex items-center ml-4 py-1 space-between">
+                          <a className="flex rounded h-20 shadow object-cover">
+                          <img className="rounded"
                             src={item.image}
                             alt={item.name}
-                            className="rounded shadow object-cover h-20 min-w-fit"
-                          />
-                        </a>
-                          &nbsp;
+                            />
+                          </a> 
+                          <a className="ml-2 sm:block hidden">
+                            &nbsp;
                           {item.name}
-                        </a>
+                          </a>
+                        </div>
                       </Link>
                     </td>
                     <td className="p-5 text-right">
@@ -93,16 +95,16 @@ function CartScreen() {
             <ul>
               <li>
                 <div className="pb-3 text-xl">
-                  Subtotal ({cartItems.reduce((a, c) => a + c.quantity, 0)}) : $
+                  Sub-Total ({cartItems.reduce((a, c) => a + c.quantity, 0)}) : $
                   {cartItems.reduce((a, c) => a + c.quantity * c.price, 0)}
                 </div>
               </li>
               <li>
                 <button
                   onClick={() => router.push('login?redirect=/shipping')}
-                  className="primary-button w-full"
+                  className="primary-button w-full transition-all font-bold text-white"
                 >
-                  Check Out
+                  Verificar
                 </button>
               </li>
             </ul>
@@ -110,6 +112,7 @@ function CartScreen() {
         </div>
       )}
     </Layout>
+  </div>
   );
 }
 

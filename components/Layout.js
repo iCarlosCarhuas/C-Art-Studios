@@ -15,7 +15,7 @@ export default function Layout({ title, children }) {
   const { state, dispatch } = useContext(Store);
   const { cart } = state;
   const [cartItemsCount, setCartItemsCount] = useState(0);
-  useEffect(() => {
+  useEffect(() => {<div >Featured Products</div>
     setCartItemsCount(cart.cartItems.reduce((a, c) => a + c.quantity, 0));
   }, [cart.cartItems]);
 
@@ -34,26 +34,25 @@ export default function Layout({ title, children }) {
 
       <ToastContainer position="bottom-center" limit={1} />
 
-      <div className="flex min-h-screen flex-col justify-between ">
+      <div className="flex min-h-screen flex-col justify-between">
         <header>
           <nav className="flex h-20 items-center px-4 justify-between shadow-md">
-            <div class="h-20 ">
+            <div className="max-w-screen-lg cursor-pointer">
               <Link href="/">
-              <img 
-                src="/Portada.png"
-                className="object-cover relative shadow-sm max-w-max h-full"
-              />
+              <h1 className='sm:text-4xl font-bold text-lg'>
+                <span className='bg-slate-100 rounded-full border-indigo-100 border-8 px-4'>
+                <span className='text-teal-500'>C-Art</span>
+                <span className='text-purple-800'>&Studios</span>
+                </span>
+              </h1>
               </Link>
             </div>
-            
-              <a className="text-lg font-bold"> E-commerce Made In Peru</a>
-            
-            <div>
+            <div className='items-center'>
               <Link href="/cart">
-                <a className="p-2">
-                  Cart
+                <a className="p-2 sm:text-xl text-sm">
+                  Carrito
                   {cartItemsCount > 0 && (
-                    <span className="ml-1 rounded-full bg-red-600 px-2 py-1 text-xs font-bold text-white">
+                    <span className="ml-1 rounded-full bg-purple-500 px-2 py-1 sm:text-sm font-bold text-white text-xs">
                       {cartItemsCount}
                     </span>
                   )}
@@ -61,24 +60,24 @@ export default function Layout({ title, children }) {
               </Link>
 
               {status === 'loading' ? (
-                'Loading'
-              ) : session?.user ? (
-                <Menu as="div" className="relative inline-block">
-                  <Menu.Button className="text-blue-600">
+                'Cargando'
+                ) : session?.user ? (
+                  <Menu as="div" className="relative inline-block">
+                  <Menu.Button className="text-teal-500 hover:text-purple-800 sm:text-xl text-sm">
                     {session.user.name}
                   </Menu.Button>
-                  <Menu.Items className="absolute right-0 w-56 origin-top-right bg-white  shadow-lg ">
+                  <Menu.Items className="absolute top-8 right-0 w-56 origin-top-right bg-white  shadow-lg ">
                     <Menu.Item>
                       <DropdownLink className="dropdown-link" href="/profile">
-                        Profile
+                        Perfíl
                       </DropdownLink>
                     </Menu.Item>
                     <Menu.Item>
                       <DropdownLink
                         className="dropdown-link"
                         href="/order-history"
-                      >
-                        Order History
+                        >
+                        Historial de Órdenes
                       </DropdownLink>
                     </Menu.Item>
                     {session.user.isAdmin && (
@@ -86,8 +85,8 @@ export default function Layout({ title, children }) {
                         <DropdownLink
                           className="dropdown-link"
                           href="/admin/dashboard"
-                        >
-                          Admin Dashboard
+                          >
+                          Panel Administrativo
                         </DropdownLink>
                       </Menu.Item>
                     )}
@@ -96,23 +95,40 @@ export default function Layout({ title, children }) {
                         className="dropdown-link"
                         href="#"
                         onClick={logoutClickHandler}
-                      >
-                        Logout
+                        >
+                        Salir de la Cuenta
                       </a>
                     </Menu.Item>
                   </Menu.Items>
                 </Menu>
               ) : (
                 <Link href="/login">
-                  <a className="p-2">Login</a>
+                  <a className="p-2 text-sm sm:text-lg">Ingresar</a>
                 </Link>
               )}
             </div>
           </nav>
         </header>
-        <main className="container m-auto mt-4 px-4">{children}</main>
+        {/* backgroundImage */}
+        <div  className="w-full h-full bg-no-repeat bg-cover bg-left bg-fixed" style={{backgroundImage: `url('/BACK01.png')`}}>
+
+        {/* container */}
+          <main className="container m-auto my-4 px-4 py-8 bg-white"> 
+            {children}
+          </main>
+        
+        </div>
+        
         <footer className="flex h-10 justify-center items-center shadow-inner">
-          <p>Copyright © 2022 C-Art & Studios</p>
+      {/* 
+          <Link href="/"
+          <img 
+            src="/Portada.png"
+            className="object-cover relative shadow-sm max-w-max h-full cursor-pointer"
+          /> 
+          </Link>
+          */}
+          <p className="font-bold">Copyright © 2022 C-Art & Studios</p>
         </footer>
       </div>
     </>
