@@ -12,7 +12,7 @@ const handler = async (req, res) => {
   const order = await Order.findById(req.query.id);
   if (order) {
     if (order.isPaid) {
-      return res.status(400).send({ message: 'Error: order is already paid' });
+      return res.status(400).send({ message: 'Error: Orden ya esta pagado' });
     }
     order.isPaid = true;
     order.paidAt = Date.now();
@@ -23,10 +23,10 @@ const handler = async (req, res) => {
     };
     const paidOrder = await order.save();
     await db.disconnect();
-    res.send({ message: 'order paid successfully', order: paidOrder });
+    res.send({ message: 'Orden pagado exitosamente', order: paidOrder });
   } else {
     await db.disconnect();
-    res.status(404).send({ message: 'Error: order not found' });
+    res.status(404).send({ message: 'Error: Orden no encontrado' });
   }
 };
 
