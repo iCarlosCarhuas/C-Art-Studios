@@ -22,7 +22,7 @@ export default function ProductScreen(props) {
     const { data } = await axios.get(`/api/products/${product._id}`);
 
     if (data.countInStock < quantity) {
-      return toast.error('Sorry. Product is out of stock');
+      return toast.error('Lo Siento, el producto esta fuera del mercado');
     }
 
     dispatch({ type: 'CART_ADD_ITEM', payload: { ...product, quantity } });
