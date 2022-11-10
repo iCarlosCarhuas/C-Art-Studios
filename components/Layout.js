@@ -110,7 +110,7 @@ export default function Layout({ title, children }) {
           </nav>
         </header>
         {/* backgroundImage */}
-        <div  className="w-full h-full bg-no-repeat bg-cover bg-left bg-fixed" style={{backgroundImage: `url('/BACK01.png')`}}>
+        <div  className="w-full h-full bg-no-repeat bg-cover bg-left bg-fixed" style={{backgroundImage: `url('/Portada.png')`}}>
 
         {/* container */}
           <main className="container m-auto my-4 px-4 py-8 bg-white"> 
