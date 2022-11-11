@@ -33,7 +33,7 @@ function reducer(state, action) {
       state;
   }
 }
-export default function AdminProdcutsScreen() {
+export default function AdminProductsScreen() {
   const router = useRouter();
 
   const [
@@ -79,14 +79,14 @@ export default function AdminProdcutsScreen() {
   }, [successDelete]);
 
   const deleteHandler = async (productId) => {
-    if (!window.confirm('Are you sure?')) {
+    if (!window.confirm('¿Estas Seguro?')) {
       return;
     }
     try {
       dispatch({ type: 'DELETE_REQUEST' });
       await axios.delete(`/api/admin/products/${productId}`);
       dispatch({ type: 'DELETE_SUCCESS' });
-      toast.success('Product deleted successfully');
+      toast.success('Producto eliminado exitosamente');
     } catch (err) {
       dispatch({ type: 'DELETE_FAIL' });
       toast.error(getError(err));
@@ -181,4 +181,4 @@ export default function AdminProdcutsScreen() {
   );
 }
 
-AdminProdcutsScreen.auth = { adminOnly: true };
+AdminProductsScreen.auth = { adminOnly: true };

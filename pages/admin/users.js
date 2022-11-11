@@ -53,14 +53,14 @@ function AdminUsersScreen() {
   }, [successDelete]);
 
   const deleteHandler = async (userId) => {
-    if (!window.confirm('Are you sure?')) {
+    if (!window.confirm('¿Estas Seguro?')) {
       return;
     }
     try {
       dispatch({ type: 'DELETE_REQUEST' });
       await axios.delete(`/api/admin/users/${userId}`);
       dispatch({ type: 'DELETE_SUCCESS' });
-      toast.success('User deleted successfully');
+      toast.success('Usuario eliminado exitosamente');
     } catch (err) {
       dispatch({ type: 'DELETE_FAIL' });
       toast.error(getError(err));

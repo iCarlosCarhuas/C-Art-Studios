@@ -6,6 +6,7 @@ export default function signature(req, res) {
     {
       timestamp: timestamp,
     },
+    //API SECRET
     process.env.CLOUDINARY_SECRET
   );
 
