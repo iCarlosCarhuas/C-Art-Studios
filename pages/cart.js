@@ -8,6 +8,7 @@ import dynamic from 'next/dynamic';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
+
 function CartScreen() {
   const router = useRouter();
   const { state, dispatch } = useContext(Store);
@@ -27,7 +28,8 @@ function CartScreen() {
     toast.success('Product updated in the cart');
   };
   return (
-  <div className="bg-gradient-to-t from-teal-200 via-cyan-500 to-white">  
+    
+    <div className="bg-gradient-to-t from-teal-200 via-cyan-500 to-white">  
     <Layout title="Shopping Cart">
       <h1 className="mb-4 text-xl">Carrito de compras</h1>
       {cartItems.length === 0 ? (
@@ -71,7 +73,7 @@ function CartScreen() {
                         onChange={(e) =>
                           updateCartHandler(item, e.target.value)
                         }
-                      >
+                        >
                         {[...Array(item.countInStock).keys()].map((x) => (
                           <option key={x + 1} value={x + 1}>
                             {x + 1}
@@ -102,7 +104,7 @@ function CartScreen() {
                 <button
                   onClick={() => router.push('login?redirect=/shipping')}
                   className="primary-button w-full transition-all font-bold text-white"
-                >
+                  >
                   Verificar
                 </button>
               </li>
@@ -114,5 +116,4 @@ function CartScreen() {
   </div>
   );
 }
-
 export default dynamic(() => Promise.resolve(CartScreen), { ssr: false });

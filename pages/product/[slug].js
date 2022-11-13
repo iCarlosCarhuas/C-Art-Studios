@@ -56,7 +56,7 @@ export default function ProductScreen(props) {
             {/* <li>
               {product.rating} of {product.numReviews} vistas
             </li> */}
-            <li className='pb-2'> 
+           <li className='pb-2'> 
               <b><div className='pb-2'>Descripción</div></b> 
             <text disabled
               className="  py-2 px-0 w-full"
